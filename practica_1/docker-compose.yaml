@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  backend:
+    container_name: BACKEND_PHP_PROYECTO_1
+    restart: always
+    build: 
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - 8000:80
+    volumes:
+      - ./src:/var/www/html
+  database:
+    container_name: DATABASE_INFORMAIX_PROYECTO_1
+    image: ibmcom/informix-developer-database:14.10.FC7W1DE
+    restart: always
+    ports:
+      - 9088:9088
+    
+volumes:
+  src: {}

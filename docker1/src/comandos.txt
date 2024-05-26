@@ -1,0 +1,50 @@
+1. Definimos la instrucción General
+FROM php:7.4-apache
+COPY /src /var/www/html 
+EXPOSE 80
+
+2. Construccipión ./abrimos la terminal y ejecutamos lo siguiente: 
+docker build -t contenedor-php .  
+Definición:  
+docker build: cmd de construcción 
+-t [name]: para asignara un nombre
+.: para espefificar la ruta
+ 
+
+3.Ver si la imagen a sido creada.
+docker images
+
+4. Mandara a ejecutar el contenedor
+docker run -p 3000:80 contenedor-php
+docker run -p 3000:80 -d contenedor-php
+
+5: Detener todo
+
+docker stop $(docker ps -a -q)
+
+
+Comandos útiles para Docker
+Antes de dejarte, he preparado una lista de comandos que te pueden ser útiles en Docker:
+
+Lista de imágenes
+$ docker image ls
+Elimina una imagen específica
+$ docker image rm [nombre de la imagen]
+Elimina todas las imágenes existentes
+$ docker image rm $(docker images -a -q)
+Lista todos los contenedores existentes (en funcionamiento y no en funcionamiento)
+$ docker ps -a
+Detener un contenedor específico
+$ docker stop [nombre del contenedor]
+Detener todos los contenedores en funcionamiento
+$ docker stop $(docker ps -a -q)
+Elimina un contenedor específico (solo si está detenido)
+$ docker rm [nombre del contenedor]
+Elimina todos los contenedores (solo si están detenidos)
+$ docker rm $(docker ps -a -q)
+Mostrar los registros de un contenedor
+$ docker logs [nombre del contenedor]
+
+3 Comando de copiado config
+docker cp [nombre del contenedor]:/usr/local/etc/php ./config
+
